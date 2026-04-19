@@ -31,6 +31,7 @@ apollo {
     service("pokeapi") {
         packageName.set("com.gustavo.kmpdexlib.data.graphql")
         srcDir("src/commonMain/graphql")
+        mapScalar("jsonb", "kotlin.Any")
     }
 }
 

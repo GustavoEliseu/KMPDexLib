@@ -33,6 +33,9 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":concept-list"))
             implementation(project(":concept-detail"))
+            implementation(project(":core-infra"))
+            implementation(project(":core-data"))
+            implementation(libs.koin.compose)
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)

@@ -19,6 +19,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core-data"))
+            implementation(project(":core-domain"))
+            implementation(libs.apollo.runtime)
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
             implementation(libs.compose.material3)
@@ -29,6 +31,10 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.coil.compose)
+        }
+        androidMain.dependencies {
+            implementation(libs.coil.network.okhttp)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
