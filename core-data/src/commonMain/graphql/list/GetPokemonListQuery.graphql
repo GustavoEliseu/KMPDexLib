@@ -1,0 +1,19 @@
+query GetPokemonList($limit: Int = 20, $offset: Int = 0) {
+  pokemon(
+    limit: $limit
+    offset: $offset
+    order_by: { id: asc }
+    where: { is_default: { _eq: true } }
+  ) {
+    id
+    name
+    pokemonspecy {
+      pokemoncolor {
+        name
+      }
+    }
+    pokemonsprites {
+      sprites(path: "front_default")
+    }
+  }
+}

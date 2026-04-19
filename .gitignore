@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+build/
+**/build/
+local.properties
+gradle-app.setting
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# macOS
+.DS_Store
+
+# Kotlin/Native
+*.klib
+
+# iOS
+iosApp/Pods/
+iosApp/*.xcworkspace/xcuserdata/
+iosApp/*.xcodeproj/xcuserdata/
+iosApp/*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+
+# Old / redundant schema file at root
+schema.sdl
+
+# Zip artifacts
+*.zip
+
+# Apollo generated sources (regenerated at build time)
+**/generated/
+
+# Secrets / local config
+*.keystore

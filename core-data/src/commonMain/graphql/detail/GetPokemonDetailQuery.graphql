@@ -1,0 +1,18 @@
+query GetPokemonDetail($id: Int!) {
+  pokemon(where: { id: { _eq: $id }, is_default: { _eq: true } }) {
+    id
+    name
+    pokemonspecy {
+      pokemonspeciesflavortexts(
+        where: { language: { name: { _eq: "en" } } }
+        order_by: [{ version_id: desc }]
+        limit: 1
+      ) {
+        flavor_text
+      }
+    }
+    pokemonsprites {
+      sprites(path: "front_default")
+    }
+  }
+}
