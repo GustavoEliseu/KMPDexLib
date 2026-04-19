@@ -7,6 +7,7 @@ import com.gustavo.kmpdexlib.concept.list.di.listModule
 import com.gustavo.kmpdexlib.concept.list.features.list.PokemonListScreen
 import com.gustavo.kmpdexlib.core.data.coreDataModule
 import com.gustavo.kmpdexlib.core.infra.coreInfraModule
+import org.koin.compose.KoinContext
 import org.koin.core.context.startKoin
 import platform.UIKit.UIViewController
 
@@ -31,8 +32,10 @@ fun startKMPDexLib() {
  * @param onPokemonClick called with the selected Pokémon's id when the user taps a card.
  */
 fun pokemonListViewController(onPokemonClick: (Int) -> Unit): UIViewController =
-    ComposeUIViewController {
-        PokemonListScreen(onPokemonClick = onPokemonClick)
+    ComposeUIViewController(configure = { enforceStrictPlistSanityCheck = false }) {
+        KoinContext {
+            PokemonListScreen(onPokemonClick = onPokemonClick)
+        }
     }
 
 /**
@@ -42,6 +45,8 @@ fun pokemonListViewController(onPokemonClick: (Int) -> Unit): UIViewController =
  * @param onBack called when the user taps the back button.
  */
 fun pokemonDetailViewController(pokemonId: Int, onBack: () -> Unit): UIViewController =
-    ComposeUIViewController {
-        PokemonDetailScreen(pokemonId = pokemonId, onBack = onBack)
+    ComposeUIViewController(configure = { enforceStrictPlistSanityCheck = false }) {
+        KoinContext {
+            PokemonDetailScreen(pokemonId = pokemonId, onBack = onBack)
+        }
     }
