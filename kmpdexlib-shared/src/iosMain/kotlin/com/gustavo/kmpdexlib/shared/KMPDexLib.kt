@@ -14,7 +14,7 @@ import platform.UIKit.UIViewController
  * Call once in AppDelegate.application(_:didFinishLaunchingWithOptions:) before
  * presenting any KMPDexLib view controller.
  */
-fun initKMPDexLib() {
+fun startKMPDexLib() {
     startKoin {
         modules(
             coreInfraModule,
