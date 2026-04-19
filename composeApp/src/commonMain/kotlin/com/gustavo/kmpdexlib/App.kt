@@ -1,49 +1,32 @@
 package com.gustavo.kmpdexlib
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.resources.painterResource
-
-import kmpdexlib.composeapp.generated.resources.Res
-import kmpdexlib.composeapp.generated.resources.compose_multiplatform
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.gustavo.kmpdexlib.concept.detail.features.detail.PokemonDetailScreen
+import com.gustavo.kmpdexlib.concept.list.features.list.PokemonListScreen
 
 @Composable
-@Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
+        var screen: AppScreen by remember { mutableStateOf(AppScreen.List) }
+
+        when (val current = screen) {
+            AppScreen.List -> PokemonListScreen(
+                onPokemonClick = { id -> screen = AppScreen.Detail(id) },
+            )
+            is AppScreen.Detail -> PokemonDetailScreen(
+                pokemonId = current.id,
+                onBack = { screen = AppScreen.List },
+            )
         }
     }
+}
+
+sealed interface AppScreen {
+    data object List : AppScreen
+    data class Detail(val id: Int) : AppScreen
 }
