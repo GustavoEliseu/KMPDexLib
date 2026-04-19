@@ -13,5 +13,15 @@
     "moduleId": "org.jetbrains.skiko:skiko:0.9.37.4",
     "file": "/Volumes/NVME500/worldpackers/Epic workspace/KMPDexLib/.kotlin/metadata/kotlinTransformedCInteropMetadataLibraries/org.jetbrains.skiko-skiko-0.9.37.4-iosMain-cinterop/org.jetbrains.skiko_skiko-cinterop-uikit-TtyIcw.klib",
     "sourceSetName": "iosMain"
+  },
+  {
+    "moduleId": "io.ktor:ktor-utils:3.0.3",
+    "file": "/Volumes/NVME500/worldpackers/Epic workspace/KMPDexLib/.kotlin/metadata/kotlinTransformedCInteropMetadataLibraries/io.ktor-ktor-utils-3.0.3-iosMain-cinterop/io.ktor_ktor-utils-cinterop-threadUtils-kGNXpQ.klib",
+    "sourceSetName": "iosMain"
+  },
+  {
+    "moduleId": "io.ktor:ktor-io:3.0.3",
+    "file": "/Volumes/NVME500/worldpackers/Epic workspace/KMPDexLib/.kotlin/metadata/kotlinTransformedCInteropMetadataLibraries/io.ktor-ktor-io-3.0.3-iosMain-cinterop/io.ktor_ktor-io-cinterop-mutex-G8iuZg.klib",
+    "sourceSetName": "iosMain"
   }
 ]

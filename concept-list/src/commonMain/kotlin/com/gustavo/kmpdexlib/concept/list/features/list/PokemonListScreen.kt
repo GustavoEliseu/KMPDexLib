@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -47,6 +48,7 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun PokemonListScreen(
     onPokemonClick: (Int) -> Unit,
+    onClose: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     viewModel: PokemonListViewModel = koinViewModel(),
 ) {
@@ -63,6 +65,7 @@ fun PokemonListScreen(
     PokemonListContent(
         state = state,
         onEvent = viewModel::onEvent,
+        onClose = onClose,
         modifier = modifier,
     )
 }
@@ -72,10 +75,22 @@ fun PokemonListScreen(
 private fun PokemonListContent(
     state: PokemonListState,
     onEvent: (PokemonListEvent) -> Unit,
+    onClose: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Pokédex") }) },
+        topBar = {
+            TopAppBar(
+                title = { Text("Pokédex") },
+                navigationIcon = {
+                    if (onClose != null) {
+                        IconButton(onClick = onClose) {
+                            Text("✕", style = MaterialTheme.typography.titleMedium)
+                        }
+                    }
+                },
+            )
+        },
         modifier = modifier,
     ) { paddingValues ->
         when {

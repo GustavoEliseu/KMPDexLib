@@ -31,10 +31,10 @@ fun startKMPDexLib() {
  *
  * @param onPokemonClick called with the selected Pokémon's id when the user taps a card.
  */
-fun pokemonListViewController(onPokemonClick: (Int) -> Unit): UIViewController =
+fun pokemonListViewController(onClose: () -> Unit, onPokemonClick: (Int) -> Unit): UIViewController =
     ComposeUIViewController(configure = { enforceStrictPlistSanityCheck = false }) {
         KoinContext {
-            PokemonListScreen(onPokemonClick = onPokemonClick)
+            PokemonListScreen(onPokemonClick = onPokemonClick, onClose = onClose)
         }
     }
 
