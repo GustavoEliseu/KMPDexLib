@@ -37,6 +37,10 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.coil.network.okhttp)
         }
+        iosMain.dependencies {
+            implementation(libs.coil.network.ktor)
+            implementation(libs.ktor.client.darwin)
+        }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

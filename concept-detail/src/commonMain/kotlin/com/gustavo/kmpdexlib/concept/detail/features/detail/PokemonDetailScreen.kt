@@ -30,7 +30,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter
+import coil3.compose.SubcomposeAsyncImage
+import coil3.compose.SubcomposeAsyncImageContent
 import com.gustavo.kmpdexlib.concept.detail.domain.PokemonDetail
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -123,14 +125,22 @@ private fun PokemonDetailBody(
             )
 
             // Sprite — centered
-            AsyncImage(
+            SubcomposeAsyncImage(
                 model = pokemon.spriteUrl,
                 contentDescription = pokemon.name,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(180.dp)
                     .align(Alignment.Center),
-            )
+            ) {
+                when (painter.state) {
+                    is AsyncImagePainter.State.Loading -> CircularProgressIndicator(
+                        color = heroContentColor,
+                        modifier = Modifier.size(48.dp),
+                    )
+                    else -> SubcomposeAsyncImageContent()
+                }
+            }
 
             // Name — bottom start
             Text(

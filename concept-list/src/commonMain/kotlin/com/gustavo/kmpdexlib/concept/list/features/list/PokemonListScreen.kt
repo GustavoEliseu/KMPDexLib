@@ -38,7 +38,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter
+import coil3.compose.SubcomposeAsyncImage
+import coil3.compose.SubcomposeAsyncImageContent
 import com.gustavo.kmpdexlib.concept.list.domain.PokemonSummary
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -171,14 +173,23 @@ private fun PokemonCard(
                 color = contentColor,
                 modifier = Modifier.align(Alignment.TopStart),
             )
-            AsyncImage(
+            SubcomposeAsyncImage(
                 model = pokemon.spriteUrl,
                 contentDescription = pokemon.name,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .size(96.dp)
                     .align(Alignment.Center),
-            )
+            ) {
+                when (painter.state) {
+                    is AsyncImagePainter.State.Loading -> CircularProgressIndicator(
+                        color = contentColor,
+                        strokeWidth = 2.dp,
+                        modifier = Modifier.size(32.dp),
+                    )
+                    else -> SubcomposeAsyncImageContent()
+                }
+            }
             Text(
                 text = pokemon.name.uppercase(),
                 style = MaterialTheme.typography.labelMedium,
