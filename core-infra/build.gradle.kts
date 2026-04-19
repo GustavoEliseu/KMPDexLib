@@ -18,6 +18,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.koin.core)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.apollo.runtime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

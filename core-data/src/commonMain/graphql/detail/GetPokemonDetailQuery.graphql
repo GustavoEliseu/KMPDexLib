@@ -3,12 +3,20 @@ query GetPokemonDetail($id: Int!) {
     id
     name
     pokemonspecy {
+      pokemoncolor {
+        name
+      }
       pokemonspeciesflavortexts(
         where: { language: { name: { _eq: "en" } } }
         order_by: [{ version_id: desc }]
         limit: 1
       ) {
         flavor_text
+      }
+    }
+    pokemontypes(order_by: { slot: asc }) {
+      type {
+        name
       }
     }
     pokemonsprites {
