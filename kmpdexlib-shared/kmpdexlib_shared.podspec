@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'kmpdexlib_shared'
-    spec.version                  = '0.2.4'
+    spec.version                  = '0.2.5'
     spec.homepage                 = 'https://github.com/GustavoEliseu/KMPDexLib'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
