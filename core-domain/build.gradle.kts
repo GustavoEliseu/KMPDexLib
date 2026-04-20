@@ -11,6 +11,7 @@ kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
+        publishLibraryVariants("release")
     }
     iosArm64()
     iosSimulatorArm64()
