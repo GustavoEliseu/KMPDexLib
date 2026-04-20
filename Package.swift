@@ -13,8 +13,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "KMPDexLib",
-            url: "https://github.com/GustavoEliseu/KMPDexLib/releases/download/v0.2.4/KMPDexLib.xcframework.zip",
-            checksum: "d90c45ae19284cb00d6fd7a1d9e856ac41f60ceef6b014ef156ddce28bad265f"
+            url: "https://github.com/GustavoEliseu/KMPDexLib/releases/download/v0.2.5/KMPDexLib.xcframework.zip",
+            checksum: "ab709e4daffaa89450bc6b2e98b5fa6a799e81b19d839f122d42736d43847fed"
         ),
     ]
 )
